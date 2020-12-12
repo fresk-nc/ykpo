@@ -1,0 +1,14 @@
+name: Unit tests
+
+on: [pull_request]
+
+jobs:
+  job:
+    name: Unit tests
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-node@v1
+        with:
+          node-version: '12'
+      - run: npm install
+      - run: npm test
