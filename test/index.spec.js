@@ -9,6 +9,10 @@ describe('calc', () => {
     expect(calc('123 + 559')).toBe(682);
   });
 
+  test('summation of negative numbers', () => {
+    expect(calc('-1 + 2')).toBe(1);
+  });
+
   test('subtraction', () => {
     expect(calc('1 - 2')).toBe(-1);
   });
