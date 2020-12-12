@@ -1,6 +1,6 @@
 const calc = require('../index');
 
-describe('blackbox', () => {
+describe('calc', () => {
   test('summation', () => {
     expect(calc('1 + 2')).toBe(3);
   });
@@ -23,5 +23,27 @@ describe('blackbox', () => {
 
   test('redefining the order of operations', () => {
     expect(calc('(1 + 2) * 2')).toBe(6);
+  });
+
+  test('division by zero', () => {
+    expect(() => {
+      calc('1 / 0');
+    }).toThrow();
+  });
+
+  test('mismatch parentheses at the end', () => {
+    expect(() => {
+      calc('(1 + 2) * 2)');
+    }).toThrow();
+  });
+
+  test('mismatch parentheses at the beginning', () => {
+    expect(() => {
+      calc('((1 + 2) * 2');
+    }).toThrow();
+  });
+
+  test('exponentiation', () => {
+    expect(calc('2 ^ (2 + 2)')).toBe(16);
   });
 });
