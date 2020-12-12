@@ -5,6 +5,10 @@ describe('calc', () => {
     expect(calc('1 + 2')).toBe(3);
   });
 
+  test('summation of large numbers', () => {
+    expect(calc('123 + 559')).toBe(682);
+  });
+
   test('subtraction', () => {
     expect(calc('1 - 2')).toBe(-1);
   });
