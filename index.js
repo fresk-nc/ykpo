@@ -10,8 +10,8 @@ lexer.addRule(/[0-9]/, (lexeme) => {
   // numbers
   return lexeme;
 });
-lexer.addRule(/[(+\-*/)]/, (lexeme) => {
-  // punctuation (i.e. "(", "+", "-", "*", "/", ")")
+lexer.addRule(/[(+\-*/^)]/, (lexeme) => {
+  // punctuation (i.e. "(", "+", "-", "*", "/", "^", ")")
   return lexeme;
 });
 
@@ -20,6 +20,7 @@ const term = { precedence: 1, associativity: 'left' };
 const parser = new Parser({
   '+': term,
   '-': term,
+  '^': term,
   '*': factor,
   '/': factor,
 });
@@ -48,6 +49,7 @@ const operator = {
 
     return a / b;
   },
+  '^': (a, b) => a ** b,
 };
 module.exports = (input) => {
   const stack = [];
@@ -58,6 +60,7 @@ module.exports = (input) => {
       case '-':
       case '*':
       case '/':
+      case '^':
         // eslint-disable-next-line no-case-declarations
         const b = +stack.pop();
         // eslint-disable-next-line no-case-declarations
