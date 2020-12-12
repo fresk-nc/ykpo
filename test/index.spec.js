@@ -6,6 +6,10 @@ describe('calc', () => {
   });
 
   test('summation of large numbers', () => {
+    expect(calc('10.5 + 3.5')).toBe(14);
+  });
+
+  test('summation of decimal numbers', () => {
     expect(calc('123 + 559')).toBe(682);
   });
 
