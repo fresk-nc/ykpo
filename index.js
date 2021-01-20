@@ -6,7 +6,7 @@ const lexer = new Lexer();
 lexer.addRule(/\s+/, () => {
   // skip whitespace
 });
-lexer.addRule(/[0-9]+/, (lexeme) => {
+lexer.addRule(/[0-9]+(?:\.[0-9]+)?/, (lexeme) => {
   // numbers
   return lexeme;
 });
