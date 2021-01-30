@@ -6,7 +6,7 @@ describe('calc', () => {
   });
 
   test('summation of large numbers', () => {
-    expect(calc('123 + 559')).toBe(682);
+    expect(calc('123 + 5599')).toBe(682);
   });
 
   test('subtraction', () => {
